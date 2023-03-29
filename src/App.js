@@ -5,7 +5,7 @@ import { Register } from './components/Register';
 import { AuthProvider } from './context/authContext'
 function App() {
   return (
-    <div className="bg-slate-300 h-screen text-white flex">
+    <div className="bg-slate-300 h-screen text-black flex">
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
