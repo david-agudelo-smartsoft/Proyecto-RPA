@@ -7,6 +7,7 @@ import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
   return (
+    
         <AuthProvider>
           <Routes>
             <Route path="/" element={
@@ -19,6 +20,7 @@ function App() {
             <Route path="/register" element={<Register />} />
           </Routes>
         </AuthProvider>
+     
   );
 }
 
