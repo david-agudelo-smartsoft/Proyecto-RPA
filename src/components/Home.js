@@ -5,11 +5,8 @@ import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import HelpIcon from "@mui/icons-material/Help";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Toolbar from "@mui/material/Toolbar";
@@ -40,9 +37,10 @@ import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
+
 const lightColor = "rgba(255, 255, 255, 0.7)";
 export function Home(props) {
-  const { onDrawerToggle } = props;
+//   const { onDrawerToggle } = props;
   const { user, logout, loading } = useAuth();
   console.log(user);
 
@@ -99,30 +97,25 @@ export function Home(props) {
 
   return (
     <div className="flex w-full h-screen">
-      <div className="w-full flex items-center justify-center lg:w-1/2">
+      <div className="w-full lg:w-1/6">
         <Drawer variant="permanent" {...other}>
           <List disablePadding>
-            <ListItem
-              sx={{ ...item, ...itemCategory, fontSize: 22, color: "#fff" }}
-            >
-              Paperbase
-            </ListItem>
             <ListItem sx={{ ...item, ...itemCategory }}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
-              <ListItemText>Project Overview</ListItemText>
+              <ListItemText sx={{ ...item, ...itemCategory, fontSize: 22, color: "#000" }}>Project Overview</ListItemText>
             </ListItem>
             {categories.map(({ id, children }) => (
-              <Box key={id} sx={{ bgcolor: "#101F33" }}>
+              <Box key={id} sx={{ bgcolor: "#fff" }}>
                 <ListItem sx={{ py: 2, px: 3 }}>
-                  <ListItemText sx={{ color: "#fff" }}>{id}</ListItemText>
+                  <ListItemText sx={{ color: "#000" }}>{id}</ListItemText>
                 </ListItem>
                 {children.map(({ id: childId, icon, active }) => (
                   <ListItem disablePadding key={childId}>
                     <ListItemButton selected={active} sx={item}>
                       <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText>{childId}</ListItemText>
+                      <ListItemText >{childId}</ListItemText>
                     </ListItemButton>
                   </ListItem>
                 ))}
@@ -133,47 +126,37 @@ export function Home(props) {
           </List>
         </Drawer>
       </div>
-      <div className='hidden relative lg:flex h-full w-1/2 items-center justify-center bg-gray-200'>
-        <h1>Bienvenido {user.email}</h1>
-        <div className="w-full items-center justify-center mt-5">
-          <React.Fragment>
+      <div className="lg:w-full h-full items-center justify-center bg-gray-200">
+        <div className="">
+          <React.Fragment className="w-full items-center justify-center">
             <AppBar color="primary" position="sticky" elevation={0}>
+              
+            </AppBar>
+            <AppBar
+              component="div"
+              color="primary"
+              position="static"
+              elevation={0}
+              sx={{ zIndex: 0 }}
+            >
               <Toolbar>
-                <Grid container spacing={1} alignItems="center">
-                  <Grid sx={{ display: { sm: "none", xs: "block" } }} item>
-                    <IconButton
-                      color="inherit"
-                      aria-label="open drawer"
-                      onClick={onDrawerToggle}
-                      edge="start"
-                    >
-                      <MenuIcon />
-                    </IconButton>
-                  </Grid>
-                  <Grid item xs />
-                  <Grid item>
-                    <Link
-                      href="/"
-                      variant="body2"
-                      sx={{
-                        textDecoration: "none",
-                        color: lightColor,
-                        "&:hover": {
-                          color: "common.white",
-                        },
-                      }}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      Go to docs
-                    </Link>
+                <Grid container alignItems="center" spacing={1}>
+                  <Grid item xs>
+                    <Typography color="inherit" variant="h5" component="h1">
+                      <h1 className="ml-12 mt-4"> Bienvenido {user.email}</h1>
+                    </Typography>
                   </Grid>
                   <Grid item>
-                    <Tooltip title="Alerts • No alerts">
-                      <IconButton color="inherit">
-                        <NotificationsIcon />
-                      </IconButton>
-                    </Tooltip>
+                      <Button
+                        className="w-20 active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-blue-500 text-white text-lg font-bold"
+                        type="submit"
+                        variant="contained"
+                        color="warning"
+                        sx={{ borderColor: lightColor }}
+                        onClick={handleLogOut}
+                      >
+                        Logout
+                      </Button>
                   </Grid>
                   <Grid item>
                     <IconButton color="inherit" sx={{ p: 0.5 }}>
@@ -188,45 +171,11 @@ export function Home(props) {
             </AppBar>
             <AppBar
               component="div"
-              color="primary"
               position="static"
               elevation={0}
               sx={{ zIndex: 0 }}
             >
-              <Toolbar>
-                <Grid container alignItems="center" spacing={1}>
-                  <Grid item xs>
-                    <Typography color="inherit" variant="h5" component="h1">
-                      Authentication
-                    </Typography>
-                  </Grid>
-                  <Grid item>
-                    <Button
-                      sx={{ borderColor: lightColor }}
-                      variant="outlined"
-                      color="inherit"
-                      size="small"
-                    >
-                      Web setup
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Tooltip title="Help">
-                      <IconButton color="inherit">
-                        <HelpIcon />
-                      </IconButton>
-                    </Tooltip>
-                  </Grid>
-                </Grid>
-              </Toolbar>
-            </AppBar>
-            <AppBar
-              component="div"
-              position="static"
-              elevation={0}
-              sx={{ zIndex: 0 }}
-            >
-              <Tabs value={0} textColor="inherit">
+              <Tabs className="ml-12 mt-4" value={0} textColor="inherit">
                 <Tab label="Users" />
                 <Tab label="Sign-in method" />
                 <Tab label="Templates" />
@@ -234,16 +183,6 @@ export function Home(props) {
               </Tabs>
             </AppBar>
           </React.Fragment>
-        </div>
-
-        <div>
-          <Typography variant="body2" color="text.secondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://mui.com/">
-              Your Website
-            </Link>{" "}
-            {new Date().getFullYear()}.
-          </Typography>
         </div>
         <div>
           <Paper sx={{ maxWidth: 936, margin: "auto", overflow: "hidden" }}>
@@ -294,16 +233,14 @@ export function Home(props) {
             </Typography>
           </Paper>
         </div>
-        <div className="w-full flex items-center justify-center mt-5 flex-col">
-          <button
-            className="w-20 active:scale-[.98] active:duration-75 hover:scale-[1.01] ease-in-out transition-all py-3 rounded-xl bg-blue-500 text-white text-lg font-bold"
-            type="submit"
-            variant="contained"
-            color="primary"
-            onClick={handleLogOut}
-          >
-            Logout
-          </button>
+        <div>
+          <Typography variant="body2" color="text.secondary" align="center">
+            {"Copyright © "}
+            <Link color="inherit" href="https://smartsoft.com.co/">
+              SmartSoft Solutions S.A.S.
+            </Link>{" "}
+            {new Date().getFullYear()}
+          </Typography>
         </div>
       </div>
     </div>
