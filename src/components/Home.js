@@ -115,7 +115,7 @@ export function Home(props) {
                   <ListItem disablePadding key={childId}>
                     <ListItemButton selected={active} sx={item}>
                       <ListItemIcon>{icon}</ListItemIcon>
-                      <ListItemText >{childId}</ListItemText>
+                      <ListItemText sx={{ color: "#000" }}>{childId}</ListItemText>
                     </ListItemButton>
                   </ListItem>
                 ))}
