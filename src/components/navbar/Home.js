@@ -1,6 +1,4 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -10,8 +8,17 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import "./Home.css";
+import { useAuth } from "../../context/authContext";
+
+import { Link } from "react-router-dom";
+import Typography from "@mui/material/Typography";
 
 export function Home() {
+  const { logout } = useAuth();
+  const handleLogOut = async () => {
+    await logout();
+  };
+
   return (
     <div>
       <div className="nav-color">
@@ -22,7 +29,7 @@ export function Home() {
                 width={50}
                 height={50}
                 alt="RPA Admin"
-                src="rpa-admin-logo.png"
+                src="/rpa-admin-logo.png"
               />
             </div>
             <Navbar.Brand className="text-color" href="#home">
@@ -31,7 +38,9 @@ export function Home() {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <div>
-                <Button variant="outline-light">Logout</Button>{" "}
+                <Button onClick={handleLogOut} variant="outline-light">
+                  Logout
+                </Button>{" "}
               </div>
               <div className="pad-2">
                 <FontAwesomeIcon className="tamano-icon" icon={faGear} />
@@ -43,38 +52,36 @@ export function Home() {
       <div className="nav-options-color">
         <Nav variant="tabs" defaultActiveKey="/home">
           <Nav.Item>
-            <Nav.Link className="text-color" href="link-1">
+            <Nav.Link className="text-color" href="/#Home">
               Tareas
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="text-color" eventKey="link-2">
+            <Nav.Link className="text-color" href="../pages/bots">
               Bots
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="text-color" eventKey="link-3">
+            <Nav.Link className="text-color" href="../pages/agents">
               Agentes
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className="text-color" eventKey="link-4">
+            <Nav.Link className="text-color" href="../pages/clients">
               Clientes
             </Nav.Link>
           </Nav.Item>
         </Nav>
       </div>
+      <div>Tareas</div>
       <div>
-        <div>Tablas</div>
-        <div>
-          <Typography variant="body2" color="text.secondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://smartsoft.com.co/">
-              SmartSoft Solutions S.A.S.
-            </Link>{" "}
-            2023
-          </Typography>
-        </div>
+        <Typography variant="body2" color="text.secondary" align="center">
+          {"Copyright © "}
+          <Link color="inherit" href="https://smartsoft.com.co/">
+            SmartSoft Solutions S.A.S.
+          </Link>{" "}
+          2023
+        </Typography>
       </div>
     </div>
   );
