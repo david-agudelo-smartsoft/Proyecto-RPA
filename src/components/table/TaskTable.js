@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
 
 function TaskTable() {
     const [showModal, setShowModal] = useState(false);
@@ -44,7 +44,7 @@ function TaskTable() {
                         <td>00:12:35</td>
                         <td className="text-center">
                             <button>
-                                <FontAwesomeIcon onClick={handleShowModal} className="rotate-icon" icon={faArrowsRotate} />
+                                <FontAwesomeIcon onClick={handleShowModal} className="rotate-icon" icon={faRotateRight} />
                             </button>
                         </td>
                     </tr>
