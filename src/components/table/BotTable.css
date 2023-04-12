@@ -13,3 +13,30 @@ td {
     padding-top: 12%;
     padding-bottom: 13%;
 }
+
+.pos-title {
+    color: #545556;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 1%;
+    display: flex; 
+    justify-content: flex-end  
+}
+
+.title {
+    padding-right: 35%;
+}
+
+.pos-boton1 {
+    padding-right: 5%;
+}
+
+.pos-boton2 {
+    padding-right: 1%;
+}
+
+.icon-refresh {
+    height: 100%;
+    color: #545556;
+}
