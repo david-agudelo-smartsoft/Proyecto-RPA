@@ -1,10 +1,19 @@
 .nav-color {
-    background-color: #006A96;
+    background-color: #006a96;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 }
 
 .nav-options-color {
-    background-color: #00AFD7;
-    padding-left: 2%;
+    background-color: #00afd7;
+    padding-left: 2%;    position: fixed;
+    top: 13.5%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
 }
 
 .text-color {

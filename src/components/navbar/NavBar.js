@@ -15,7 +15,6 @@ function NavBar() {
     const handleLogOut = async () => {
         await logout();
     };
-
     return (
         <div>
             <div className="nav-color">

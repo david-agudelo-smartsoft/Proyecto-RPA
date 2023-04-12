@@ -1,8 +1,8 @@
 import React from 'react';
-import "./TaskTable.css"
+import "./BotTable.css"
 import Table from "react-bootstrap/Table";
 
-function TaskTable() {
+function BotTable() {
     return (
         <div className='MainContainer'>
             <Table striped bordered hover>
@@ -41,4 +41,4 @@ function TaskTable() {
     );
 }
 
-export default TaskTable;
+export default BotTable;
