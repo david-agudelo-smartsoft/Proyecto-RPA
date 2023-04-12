@@ -36,7 +36,7 @@ function NavBar() {
                             <div>
                                 <Button onClick={console.log({handleLogOut})} variant="outline-light">
                                     Logout
-                                </Button>{" "}
+                                </Button>
                             </div>
                             <div className="pad-2">
                                 <FontAwesomeIcon className="tamano-icon" icon={faGear} />
