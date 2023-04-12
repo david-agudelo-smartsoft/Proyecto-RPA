@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Login } from "./components/Login";
 import { Register } from "./components/Register";
-import Home from "./components/navbar/Home";
+import Task from "./components/pages/Task";
 import Bots from "./components/pages/Bots";
 import Agents from "./components/pages/Agents";
 import Clients from "./components/pages/Clients";
@@ -16,14 +16,14 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Home />
+              <Task />
             </ProtectedRoute>
           }
         />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/navbar/Home" element={<Home />} />
         
+        <Route path="/pages/Task" element={<Task />} />
         <Route path="/pages/Bots" element={<Bots />} />
         <Route path="/pages/Agents" element={<Agents />} />
         <Route path="/pages/Clients" element={<Clients />} />

@@ -1,0 +1,13 @@
+.table-header {
+    background-color: #006A96;
+    color: white;
+}
+
+.table-header th {
+    padding: 20rem;
+}
+.tamano-icon {
+    height: 30px;
+    padding-top: 20%;
+    color: white;
+}

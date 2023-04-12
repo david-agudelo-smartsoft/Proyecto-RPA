@@ -7,7 +7,7 @@ import Figure from "react-bootstrap/Figure";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
-import "../navbar/Home.css";
+import "../navbar/NavBar.css";
 import { useAuth } from "../../context/authContext";
 
 function NavBar() {
@@ -26,7 +26,7 @@ function NavBar() {
                                 width={50}
                                 height={50}
                                 alt="RPA Admin"
-                                src="../rpa-admin-logo.png"
+                                src="../../rpa-admin-logo.png"
                             />
                         </div>
                         <Navbar.Brand className="text-color" href="#home">
@@ -35,7 +35,7 @@ function NavBar() {
                         <Navbar.Toggle />
                         <Navbar.Collapse className="justify-content-end">
                             <div>
-                                <Button onClick={handleLogOut} variant="outline-light">
+                                <Button onClick={console.log({handleLogOut})} variant="outline-light">
                                     Logout
                                 </Button>{" "}
                             </div>
@@ -49,7 +49,7 @@ function NavBar() {
             <div className="nav-options-color">
                 <Nav variant="tabs" defaultActiveKey="/home">
                     <Nav.Item>
-                        <Nav.Link className="text-color" href="../navbar/home">
+                        <Nav.Link className="text-color" href="../pages/task">
                             Tareas
                         </Nav.Link>
                     </Nav.Item>

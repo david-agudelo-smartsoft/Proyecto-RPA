@@ -1,12 +1,13 @@
 import * as React from "react";
 import NavBar from "../navbar/NavBar";
+import TaskTable from "../table/TaskTable";
 import Footer from "../footer/Footer";
 
-export function Agents() {
+export function Task() {
   return (
     <div>
       <NavBar />
-      <div>Agentes</div>
+      <TaskTable />
       <div>
         <Footer />
       </div>
@@ -14,4 +15,4 @@ export function Agents() {
   );
 }
 
-export default Agents;
+export default Task;
