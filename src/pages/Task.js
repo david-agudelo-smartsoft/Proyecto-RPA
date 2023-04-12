@@ -1,7 +1,7 @@
 import * as React from "react";
-import NavBar from "../navbar/NavBar";
-import TaskTable from "../table/TaskTable";
-import Footer from "../footer/Footer";
+import NavBar from "../components/navbar/NavBar";
+import TaskTable from "../components/table/TaskTable";
+import Footer from "../components/footer/Footer";
 
 export function Task() {
   return (

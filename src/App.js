@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import { Login } from "./components/Login";
-import { Register } from "./components/Register";
-import Task from "./components/pages/Task";
-import Bots from "./components/pages/Bots";
-import Agents from "./components/pages/Agents";
-import Clients from "./components/pages/Clients";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import Task from "./pages/Task";
+import Bots from "./pages/Bots";
+import Agents from "./pages/Agents";
+import Clients from "./pages/Clients";
 import { AuthProvider } from "./context/authContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
@@ -23,10 +23,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         
-        <Route path="/pages/Task" element={<Task />} />
-        <Route path="/pages/Bots" element={<Bots />} />
-        <Route path="/pages/Agents" element={<Agents />} />
-        <Route path="/pages/Clients" element={<Clients />} />
+        <Route path="/Task" element={<Task />} />
+        <Route path="/Bots" element={<Bots />} />
+        <Route path="/Agents" element={<Agents />} />
+        <Route path="/Clients" element={<Clients />} />
       </Routes>
     </AuthProvider>
   );

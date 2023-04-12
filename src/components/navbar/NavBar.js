@@ -49,22 +49,22 @@ function NavBar() {
             <div className="nav-options-color">
                 <Nav variant="tabs" defaultActiveKey="/home">
                     <Nav.Item>
-                        <Nav.Link className="text-color" href="../pages/task">
+                        <Nav.Link className="text-color" href="/task">
                             Tareas
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link className="text-color" href="../pages/bots">
+                        <Nav.Link className="text-color" href="/bots">
                             Bots
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link className="text-color" href="../pages/agents">
+                        <Nav.Link className="text-color" href="/agents">
                             Agentes
                         </Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link className="text-color" href="../pages/clients">
+                        <Nav.Link className="text-color" href="/clients">
                             Clientes
                         </Nav.Link>
                     </Nav.Item>
