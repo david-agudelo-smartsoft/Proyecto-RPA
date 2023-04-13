@@ -4,7 +4,7 @@ import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+import { faArrowsRotate, faRotateRight } from "@fortawesome/free-solid-svg-icons";
 
 function TaskTable() {
     const [showModal, setShowModal] = useState(false);
