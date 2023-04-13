@@ -17,3 +17,42 @@ td {
     height: 25px;
     color: #545556;
 }
+
+thead {
+    background-color: #006a96;
+    color: white;
+}
+
+th,
+td {
+    padding: 10px;
+}
+
+.MainContainer-tareas{
+    padding: 10%;
+    padding-top: 12%;
+    padding-bottom: 13%;
+}
+
+.pos-title {
+    color: #545556;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 1%;
+    display: flex; 
+    justify-content: flex-end  
+}
+
+.title-tareas {
+    padding-right: 42%;
+}
+
+.pos-boton1 {
+    padding-right: 5%;
+}
+
+.icon-refresh {
+    height: 100%;
+    color: #545556;
+}
