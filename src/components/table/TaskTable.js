@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import "./TaskTable.css"
 import Table from "react-bootstrap/Table";
-import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
 import { faRotateRight } from "@fortawesome/free-solid-svg-icons";
+import QueryTypeModal from '../modal/QueryTypeModal';
 
 function TaskTable() {
     const [showModal, setShowModal] = useState(false);
@@ -57,22 +57,7 @@ function TaskTable() {
                     </tr>
                 </tbody>
             </Table>
-
-            <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Tipo de consulta / Log</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <p>Esta es la información del parámetro 1.</p>
-                    <p>Esta es la información del parámetro 1.</p>
-                    <p>Esta es la información del parámetro 1.</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Cerrar
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            <QueryTypeModal show={showModal} handleClose={handleCloseModal}/>
         </div>
     );
 }
