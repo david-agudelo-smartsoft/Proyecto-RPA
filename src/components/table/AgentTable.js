@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./AgentTable.css";
 import Table from "react-bootstrap/Table";
-import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import StatusList from "../list/StatusList";
+import AgentNameModal from "../modal/AgentNameModal";
 
 function AgentTable() {
   const [showModal, setShowModal] = useState(false);
@@ -40,35 +40,12 @@ function AgentTable() {
                 icon={faPenToSquare}
               />
             </td>
-            <td>Lista desplegable</td>
+            <td><StatusList /></td>
             <td>05/04/2023 03:00 am (Validación con colores)</td>
           </tr>
         </tbody>
       </Table>
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Editar nombre usuario</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="formNameUser">
-              <Form.Label></Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Ingrese el nombre del agente"
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button type="submit" variant="primary" onClick={handleCloseModal}>
-            Aceptar
-          </Button>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Cerrar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <AgentNameModal show={showModal} handleClose={handleCloseModal}/>
     </div>
   );
 }
