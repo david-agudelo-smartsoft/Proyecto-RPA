@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import StatusList from "../list/StatusList";
 
 function AgentTable() {
   const [showModal, setShowModal] = useState(false);
@@ -40,7 +41,7 @@ function AgentTable() {
                 icon={faPenToSquare}
               />
             </td>
-            <td>Lista desplegable</td>
+            <td><StatusList /></td>
             <td>05/04/2023 03:00 am (Validación con colores)</td>
           </tr>
         </tbody>

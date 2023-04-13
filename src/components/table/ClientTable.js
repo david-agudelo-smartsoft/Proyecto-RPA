@@ -1,11 +1,19 @@
 import React from 'react';
 import "./ClientTable.css"
 import Table from "react-bootstrap/Table";
-import Form from 'react-bootstrap/Form';
+import StatusList from "../list/StatusList";
 
 function ClientTable() {
     return (
         <div className='MainContainer'>
+            <div className="pos-title">
+                <div className="title-client">Clientes</div>
+                <div className="pos-boton2">
+                    <button type="button" className="btn btn-primary">
+                        Crear Cliente
+                    </button>
+                </div>
+            </div>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -19,11 +27,7 @@ function ClientTable() {
                         <td>1003688827</td>
                         <td>Santiago Martinez</td>
                         <td>
-                            <Form.Select>
-                                <option>ACTIVE</option>
-                                <option>INACTIVE</option>
-                                <option>STOPPED</option>
-                            </Form.Select>
+                            <StatusList />
                         </td>
                     </tr>
                 </tbody>
