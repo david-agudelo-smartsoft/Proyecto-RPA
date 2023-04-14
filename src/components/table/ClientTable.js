@@ -12,6 +12,8 @@ function ClientTable() {
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
 
+    const NombreCliente = "Nombre cliente"
+
     return (
         <div className='MainContainer'>
             <div className="pos-title">
@@ -22,7 +24,7 @@ function ClientTable() {
                     </button>
                 </div>
             </div>
-            <Table striped bordered hover>
+            <Table striped bordered hover className='vertical-align'>
                 <thead>
                     <tr>
                         <th>Identificacion</th>
@@ -34,7 +36,7 @@ function ClientTable() {
                     <tr>
                         <td>1003688827</td>
                         <td>
-                            Nombre Cliente{" "}
+                            {NombreCliente}
                             <FontAwesomeIcon
                                 className="edit-boton"
                                 onClick={handleShowModal}

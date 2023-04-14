@@ -17,3 +17,6 @@ td {
 .title-agents {
     padding-right: 40%;
 }
+.vertical-align{
+    vertical-align: baseline
+}

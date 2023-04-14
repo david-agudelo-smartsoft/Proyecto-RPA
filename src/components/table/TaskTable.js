@@ -21,7 +21,7 @@ function TaskTable() {
                     <FontAwesomeIcon className="icon-refresh" icon={faArrowsRotate} />
                 </div>
             </div>
-            <Table striped bordered hover>
+            <Table striped bordered hover className='vertical-align'>
                 <thead>
                     <tr>
                         <th>ID tareas</th>

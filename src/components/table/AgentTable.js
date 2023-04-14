@@ -18,11 +18,11 @@ function AgentTable() {
         <div className="title-agents">Agentes</div>
         <div className="pos-boton2">
           <button type="button" className="btn btn-primary">
-            Crear bot
+            Crear Agente
           </button>
         </div>
       </div>
-      <Table striped bordered hover>
+      <Table striped bordered hover className="vertical-align">
         <thead>
           <tr>
             <th>Nombre</th>
