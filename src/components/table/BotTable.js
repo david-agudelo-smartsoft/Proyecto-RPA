@@ -12,6 +12,7 @@ import VersionModal from "../modal/VersionModal";
 import AttemptsModal from "../modal/AttemptsModal";
 import ResultModal from "../modal/ResultModal";
 import RequestModal from "../modal/RequestModal";
+import CreateBot from "../modal/form/CreateBot";
 
 function BotTable() {
   // Modal Version
@@ -40,6 +41,12 @@ function BotTable() {
   const handleShowModalSystem = () => setShowModalSystem(true);
   const handleCloseModalSystem = () => setShowModalSystem(false);
 
+    // Modal Crear bot
+    const [showModalCreateBot, setShowModalCreateBot] = useState(false);
+
+    const handleShowModalCreateBot = () => setShowModalCreateBot(true);
+    const handleCloseModalCreateBot = () => setShowModalCreateBot(false);
+
   return (
     <div className="MainContainer">
       <div className="pos-title">
@@ -48,7 +55,7 @@ function BotTable() {
           <FontAwesomeIcon className="icon-refresh" icon={faArrowsRotate} />
         </div>
         <div className="pos-boton2">
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={handleShowModalCreateBot}>
             Crear bot
           </button>
         </div>
@@ -139,6 +146,11 @@ function BotTable() {
       <SystemModal
         show={showModalSystem}
         handleClose={handleCloseModalSystem}
+      />
+      {/* Modal Crear bot */}
+      <CreateBot
+        show={showModalCreateBot}
+        handleClose={handleCloseModalCreateBot}
       />
     </div>
   );
