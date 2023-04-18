@@ -15,4 +15,3 @@ export function Bots() {
   );
 }
 
-export default Bots;

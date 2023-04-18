@@ -15,4 +15,3 @@ export function Agents() {
   );
 }
 
-export default Agents;

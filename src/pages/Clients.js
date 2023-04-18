@@ -1,9 +1,18 @@
-import * as React from "react";
+import React, {useEffect} from "react";
 import NavBar from "../components/navbar/NavBar";
 import Footer from "../components/footer/Footer";
 import ClientTable from "../components/table/ClientTable";
-function Clients() {
+import { useMain } from '../../context/mainContext'
+
+
+export function Clients() {
+  const { getClients } = useMain();
+
+  useEffect(() => {
+    getClients();
+  })
   return (
+
     <div>
       <NavBar />
       <ClientTable />
@@ -13,5 +22,3 @@ function Clients() {
     </div>
   );
 }
-
-export default Clients;

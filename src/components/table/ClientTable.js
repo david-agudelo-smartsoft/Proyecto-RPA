@@ -8,6 +8,7 @@ import ClientNameModal from "../modal/ClientNameModal";
 import CreateClient from "../modal/form/CreateClient";
 
 function ClientTable() {
+
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
