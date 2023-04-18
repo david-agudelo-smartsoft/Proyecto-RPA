@@ -1,25 +1,32 @@
 import React, { useState } from "react";
 import "./ClientTable.css";
 import Table from "react-bootstrap/Table";
-import StatusList from "../list/StatusList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import ClientNameModal from "../modal/ClientNameModal";
+import ClientStatusModal from "../modal/ClientStatusModal";
 import CreateClient from "../modal/form/CreateClient";
 
 function ClientTable() {
 
-  const [showModal, setShowModal] = useState(false);
+  // Editar nombre
+  const [showModalName, setShowModalName] = useState(false);
 
-  const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  const handleShowModalName = () => setShowModalName(true);
+  const handleCloseModalName = () => setShowModalName(false);
+
+  // Editar estado
+  const [showModalStatus, setShowModalStatus] = useState(false);
+
+
+  const handleShowModalStatus = () => setShowModalStatus(true);
+  const handleCloseModalStatus = () => setShowModalStatus(false);
 
   const [showModalCreateClient, setShowModalCreateClient] = useState(false);
 
   const handleShowModalCreateClient = () => setShowModalCreateClient(true);
   const handleCloseModalCreateClient = () => setShowModalCreateClient(false);
 
-  const NombreCliente = "Nombre cliente";
 
   return (
     <div className="MainContainer">
@@ -47,20 +54,24 @@ function ClientTable() {
           <tr>
             <td>1003688827</td>
             <td>
-              {NombreCliente}
               <FontAwesomeIcon
                 className="edit-boton"
-                onClick={handleShowModal}
+                onClick={handleShowModalName}
                 icon={faPenToSquare}
               />
             </td>
             <td>
-              <StatusList />
+              <FontAwesomeIcon
+                className="edit-boton"
+                onClick={handleShowModalStatus}
+                icon={faPenToSquare}
+              />
             </td>
           </tr>
         </tbody>
       </Table>
-      <ClientNameModal show={showModal} handleClose={handleCloseModal} />
+      <ClientNameModal show={showModalName} handleClose={handleCloseModalName} />
+      <ClientStatusModal show={showModalStatus} handleClose={handleCloseModalStatus} />
       <CreateClient
         show={showModalCreateClient}
         handleClose={handleCloseModalCreateClient}
