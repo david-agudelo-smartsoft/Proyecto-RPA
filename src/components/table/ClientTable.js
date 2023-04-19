@@ -6,8 +6,12 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import ClientNameModal from "../modal/ClientNameModal";
 import ClientStatusModal from "../modal/ClientStatusModal";
 import CreateClient from "../modal/form/CreateClient";
+import { useContent } from "../../context/mainContext";
 
 function ClientTable() {
+  //Petcion GET 
+
+  const { contents } = useContent()
 
   // Editar nombre
   const [showModalName, setShowModalName] = useState(false);
@@ -51,23 +55,28 @@ function ClientTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1003688827</td>
-            <td>
-              <FontAwesomeIcon
-                className="edit-boton"
-                onClick={handleShowModalName}
-                icon={faPenToSquare}
-              />
-            </td>
-            <td>
-              <FontAwesomeIcon
-                className="edit-boton"
-                onClick={handleShowModalStatus}
-                icon={faPenToSquare}
-              />
-            </td>
-          </tr>
+          {contents.map(content => (
+            <tr key={content._id}>
+              <td> {content.identifier} </td>
+              <td>
+                {content.name}
+                <FontAwesomeIcon
+                  className="edit-boton"
+                  onClick={handleShowModalName}
+                  icon={faPenToSquare}
+                />
+              </td>
+              <td>
+                {content.status}
+                <FontAwesomeIcon
+                  className="edit-boton"
+                  onClick={handleShowModalStatus}
+                  icon={faPenToSquare}
+                />
+              </td>
+            </tr>
+          ))}
+
         </tbody>
       </Table>
       <ClientNameModal show={showModalName} handleClose={handleCloseModalName} />
