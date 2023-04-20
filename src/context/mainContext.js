@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from 'react'
-import { getClientsRequests, postClientsRequest } from '../API/ClientApi'
+import { getClientsRequests, postClientsRequest, getClientRequests } from '../API/ClientApi'
 
 const maincontext = createContext()
 
@@ -21,6 +21,18 @@ export const MainProvider = ({ children }) => {
         const res = await postClientsRequest(client)
         setContents([...contents, res.data])
     }
+
+    const getClientById = async (id) => {
+        try {
+            const res = await getClientRequests(id);
+            console.log(res.data)
+            return res.data;
+            
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
         getClients()
     }, [])
@@ -28,7 +40,8 @@ export const MainProvider = ({ children }) => {
     return <maincontext.Provider value={{
         contents,
         getClients,
-        postClients
+        postClients,
+        getClientById,
     }}>
         {children}
     </maincontext.Provider>
