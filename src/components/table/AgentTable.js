@@ -4,8 +4,7 @@ import Table from "react-bootstrap/Table";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import StatusList from "../list/StatusList";
-import AgentNameModal from "../modal/AgentNameModal";
+import EditAgent from "../modal/form/EditAgent";
 import CreateAgent from "../modal/form/CreateAgent";
 
 function AgentTable() {
@@ -23,36 +22,44 @@ function AgentTable() {
       <div className="pos-title">
         <div className="title-agents">Agentes</div>
         <div className="pos-boton2">
-          <button type="button" className="btn btn-primary" onClick={handleShowModalCreateAgent}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleShowModalCreateAgent}
+          >
             Crear Agente
           </button>
         </div>
       </div>
-      <Table striped bordered hover className="vertical-align">
+      <Table striped bordered hover className="vertical-align text-center">
         <thead>
           <tr>
             <th>Nombre</th>
             <th>Estado</th>
             <th>Ultima conexión</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td>Nombre agente</td>
+            <td>Active</td>
+            <td>05/04/2023 03:00 am (Validación con colores)</td>
             <td>
-              Nombre agente{" "}
               <FontAwesomeIcon
                 className="edit-boton"
                 onClick={handleShowModal}
                 icon={faPenToSquare}
               />
             </td>
-            <td><StatusList /></td>
-            <td>05/04/2023 03:00 am (Validación con colores)</td>
           </tr>
         </tbody>
       </Table>
-      <AgentNameModal show={showModal} handleClose={handleCloseModal}/>
-      <CreateAgent show={showModalCreateAgent} handleClose={handleCloseModalCreateAgent}/>
+      <EditAgent show={showModal} handleClose={handleCloseModal} />
+      <CreateAgent
+        show={showModalCreateAgent}
+        handleClose={handleCloseModalCreateAgent}
+      />
     </div>
   );
 }

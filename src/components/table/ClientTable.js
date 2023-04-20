@@ -3,28 +3,20 @@ import "./ClientTable.css";
 import Table from "react-bootstrap/Table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import ClientNameModal from "../modal/ClientNameModal";
-import ClientStatusModal from "../modal/ClientStatusModal";
 import CreateClient from "../modal/form/CreateClient";
+import EditClient from "../modal/form/EditClient";
 import { useContent } from "../../context/mainContext";
 
 function ClientTable() {
   //Petcion GET 
-
   const { contents } = useContent()
 
-  // Editar nombre
-  const [showModalName, setShowModalName] = useState(false);
-
-  const handleShowModalName = () => setShowModalName(true);
-  const handleCloseModalName = () => setShowModalName(false);
-
   // Editar estado
-  const [showModalStatus, setShowModalStatus] = useState(false);
+  const [showModalEditClient, setShowModalEditClient] = useState(false);
 
 
-  const handleShowModalStatus = () => setShowModalStatus(true);
-  const handleCloseModalStatus = () => setShowModalStatus(false);
+  const handleShowModalEditClient = () => setShowModalEditClient(true);
+  const handleCloseModalEditClient = () => setShowModalEditClient(false);
 
   const [showModalCreateClient, setShowModalCreateClient] = useState(false);
 
@@ -46,12 +38,13 @@ function ClientTable() {
           </button>
         </div>
       </div>
-      <Table striped bordered hover className="vertical-align">
+      <Table striped bordered hover className="vertical-align text-center">
         <thead>
           <tr>
             <th>Identificacion</th>
             <th>Nombre</th>
             <th>Estado</th>
+            <th>Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -60,17 +53,14 @@ function ClientTable() {
               <td> {content.identifier} </td>
               <td>
                 {content.name}
-                <FontAwesomeIcon
-                  className="edit-boton"
-                  onClick={handleShowModalName}
-                  icon={faPenToSquare}
-                />
               </td>
               <td>
                 {content.status}
-                <FontAwesomeIcon
+              </td>
+              <td>
+              <FontAwesomeIcon
                   className="edit-boton"
-                  onClick={handleShowModalStatus}
+                  onClick={handleShowModalEditClient}
                   icon={faPenToSquare}
                 />
               </td>
@@ -79,8 +69,7 @@ function ClientTable() {
 
         </tbody>
       </Table>
-      <ClientNameModal show={showModalName} handleClose={handleCloseModalName} />
-      <ClientStatusModal show={showModalStatus} handleClose={handleCloseModalStatus} />
+      <EditClient show={showModalEditClient} handleClose={handleCloseModalEditClient} />
       <CreateClient
         show={showModalCreateClient}
         handleClose={handleCloseModalCreateClient}

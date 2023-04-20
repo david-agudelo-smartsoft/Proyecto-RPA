@@ -2,21 +2,32 @@ import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import StatusList from "../../list/StatusList";
 
-function AgentNameModal({ show, handleClose }) {
+function EditAgent({ show, handleClose }) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Editar nombre usuario</Modal.Title>
+        <Modal.Title>Editar Agente</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group className="mb-3" controlId="formNameUser">
-            <Form.Label></Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Ingrese el nombre del agente"
-            />
+            <FloatingLabel
+              controlId="nameAgent"
+              label="Nombre del agente"
+              className="mb-3"
+            >
+              <Form.Control type="text" />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="stateAgent"
+              label="Estado"
+              className="mb-3"
+            >
+              <StatusList />
+            </FloatingLabel>
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -32,4 +43,4 @@ function AgentNameModal({ show, handleClose }) {
   );
 }
 
-export default AgentNameModal;
+export default EditAgent;
