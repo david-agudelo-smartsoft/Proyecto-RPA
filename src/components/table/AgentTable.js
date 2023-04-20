@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./AgentTable.css";
 import Table from "react-bootstrap/Table";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import EditAgent from "../modal/form/EditAgent";
 import CreateAgent from "../modal/form/CreateAgent";
+import { useContent } from "../../context/mainContext";
 
 function AgentTable() {
+  //Petcion GET 
+  const { contents } = useContent()
+
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -41,10 +44,15 @@ function AgentTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Nombre agente</td>
-            <td>Active</td>
-            <td>05/04/2023 03:00 am (Validación con colores)</td>
+        {contents.map(content => (
+          <tr key={content._id}>
+            <td>
+                {content.name}
+              </td>
+              <td>
+                {content.status}
+              </td>
+            <td>{content.lastConnection} (Validación con colores)</td>
             <td>
               <FontAwesomeIcon
                 className="edit-boton"
@@ -53,6 +61,7 @@ function AgentTable() {
               />
             </td>
           </tr>
+           ))}
         </tbody>
       </Table>
       <EditAgent show={showModal} handleClose={handleCloseModal} />

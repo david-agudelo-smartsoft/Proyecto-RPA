@@ -47,14 +47,14 @@ function CreateBot({ show, handleClose }) {
             >
               <Form.Control type="text" />
             </FloatingLabel>
-            <FloatingLabel
-              controlId="result"
-              label="Resultado"
-              className="mb-3"
-            >
+            <FloatingLabel controlId="result" label="ttResult" className="mb-3">
               <Form.Control type="text" />
             </FloatingLabel>
-            <FloatingLabel controlId="request" label="Pedido" className="mb-3">
+            <FloatingLabel
+              controlId="request"
+              label="ttRequest"
+              className="mb-3"
+            >
               <Form.Control type="text" />
             </FloatingLabel>
           </Form.Group>
