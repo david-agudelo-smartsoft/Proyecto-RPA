@@ -6,10 +6,11 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from 'formik'
 import { useContent } from "../../../context/mainContext";
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 
 function EditClient({ id, show, handleClose }) {
 
-  const { getClientById, postClients } = useContent();
+  const { getClientById, updateClient } = useContent();
 
   const [client, setClient] = useState({
     identifier: "",
@@ -36,9 +37,10 @@ function EditClient({ id, show, handleClose }) {
           initialValues={client}
           onSubmit={(values, { resetForm }) => {
             try {
-              postClients(values);
+              updateClient(id, values);
               handleClose();
               resetForm();
+              toast.success('Usuario Actualizado');
             } catch (error) {
               console.error(error);
             }
