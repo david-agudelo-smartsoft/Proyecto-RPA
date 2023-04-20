@@ -1,5 +1,5 @@
 import { useState, createContext, useContext, useEffect } from 'react'
-import { getClientsRequests, postClientsRequest, getClientRequests, updateClientRequests } from '../API/ClientApi'
+import { getClientsRequests, postClientsRequest, getClientRequests } from '../API/ClientApi'
 
 const maincontext = createContext()
 
@@ -57,7 +57,6 @@ export const MainProvider = ({ children }) => {
         getClients,
         postClients,
         getClientById,
-        updateClient,
     }}>
         {children}
     </maincontext.Provider>
