@@ -1,5 +1,4 @@
 import { useState, createContext, useContext, useEffect } from 'react'
-import { getAgentsRequests, postAgentsRequest } from '../API/AgentApi'
 import { getClientsRequests, postClientsRequest, getClientRequests, updateClientRequests } from '../API/ClientApi'
 
 const maincontext = createContext()
@@ -43,26 +42,12 @@ export const MainProvider = ({ children }) => {
         getClients()
     }, [])
 
-    // Agentes
-    const getAgents = async () => {
-        const res = await getAgentsRequests()
-        setContents(res.data)
-    }
-
-    const postAgents = async (agent) => {
-        const res = await postAgentsRequest(agent)
-        setContents([...contents, res.data])
-    }
-    useEffect(() => {
-        getAgents()
-    }, [])
-
     return <maincontext.Provider value={{
         contents,
         getClients,
         postClients,
-        getAgents,
-        postAgents
+        getClientById,
+        updateClient,
     }}>
         {children}
     </maincontext.Provider>

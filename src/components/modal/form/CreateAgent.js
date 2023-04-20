@@ -4,11 +4,11 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from "formik";
-import { useContent } from "../../../context/mainContext";
+import { useContentAgent } from "../../../context/mainContextAgents";
 import * as Yup from "yup";
 
 function CreateAgent({ show, handleClose }) {
-  const { postAgents } = useContent();
+  const { postAgents } = useContentAgent();
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>

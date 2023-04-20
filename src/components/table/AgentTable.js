@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import EditAgent from "../modal/form/EditAgent";
 import CreateAgent from "../modal/form/CreateAgent";
-import { useContent } from "../../context/mainContext";
+import { useContentAgent } from "../../context/mainContextAgents";
 
 function AgentTable() {
   //Petcion GET 
-  const { contents } = useContent()
+  const { contents } = useContentAgent()
 
   const [showModal, setShowModal] = useState(false);
 
@@ -52,7 +52,7 @@ function AgentTable() {
               <td>
                 {content.status}
               </td>
-            <td>{content.createdAt} (Validación con colores)</td>
+            <td> (Validación con colores)</td>
             <td>
               <FontAwesomeIcon
                 className="edit-boton"
