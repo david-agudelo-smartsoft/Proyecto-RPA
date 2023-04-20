@@ -52,7 +52,7 @@ function AgentTable() {
               <td>
                 {content.status}
               </td>
-            <td>{content.lastConnection} (Validación con colores)</td>
+            <td>{content.createdAt} (Validación con colores)</td>
             <td>
               <FontAwesomeIcon
                 className="edit-boton"

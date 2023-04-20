@@ -30,7 +30,6 @@ function CreateAgent({ show, handleClose }) {
             }
           }}
           validationSchema={Yup.object({
-            identifier: Yup.number().required("Campo requerido"),
             name: Yup.string().required("Campo requerido"),
             status: Yup.string()
               .oneOf(["ACTIVE", "INACTIVE", "STOPPED"], "Estado inválido")
