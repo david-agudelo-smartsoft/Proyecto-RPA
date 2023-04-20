@@ -5,8 +5,8 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from "formik";
 import { useContent } from "../../../context/mainContext";
-import * as Yup from "yup";
-
+import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 function CreateClient({ show, handleClose }) {
   const { postClients } = useContent();
 
@@ -27,6 +27,7 @@ function CreateClient({ show, handleClose }) {
               postClients(values);
               handleClose();
               resetForm();
+              toast.success('Usuario creado');
             } catch (error) {
               console.error(error);
             }
@@ -91,7 +92,7 @@ function CreateClient({ show, handleClose }) {
                 </FloatingLabel>
               </Form.Group>
               <Modal.Footer>
-                <Button type="submit" variant="primary">
+                <Button type="submit" variant="primary" >
                   Aceptar
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>

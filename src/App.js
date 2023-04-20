@@ -3,6 +3,7 @@ import { Agents, Task, Bots, Clients, NotFoundPage, Login, Register } from './pa
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/authContext";
 import { MainProvider } from "./context/mainContext";
+import { Toaster} from 'react-hot-toast'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/Clients" element={<Clients />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Toaster />
       </MainProvider>
     </AuthProvider>
   );

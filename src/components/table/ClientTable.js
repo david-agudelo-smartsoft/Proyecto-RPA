@@ -8,15 +8,19 @@ import EditClient from "../modal/form/EditClient";
 import { useContent } from "../../context/mainContext";
 
 function ClientTable() {
-  //Petcion GET 
+  // Petición GET 
   const { contents } = useContent()
 
   // Editar estado
   const [showModalEditClient, setShowModalEditClient] = useState(false);
+  const [id, setId] = useState(null);
 
-
-  const handleShowModalEditClient = () => setShowModalEditClient(true);
+  const handleShowModalEditClient = (_id) => {
+    setShowModalEditClient(true);
+    setId(_id);
+  }
   const handleCloseModalEditClient = () => setShowModalEditClient(false);
+  console.log(handleCloseModalEditClient)
 
   const [showModalCreateClient, setShowModalCreateClient] = useState(false);
 
@@ -58,9 +62,9 @@ function ClientTable() {
                 {content.status}
               </td>
               <td>
-              <FontAwesomeIcon
+                <FontAwesomeIcon
                   className="edit-boton"
-                  onClick={handleShowModalEditClient}
+                  onClick={() => handleShowModalEditClient(content._id)}
                   icon={faPenToSquare}
                 />
               </td>
@@ -69,7 +73,7 @@ function ClientTable() {
 
         </tbody>
       </Table>
-      <EditClient show={showModalEditClient} handleClose={handleCloseModalEditClient} />
+      <EditClient show={showModalEditClient} handleClose={handleCloseModalEditClient} id={id}/>
       <CreateClient
         show={showModalCreateClient}
         handleClose={handleCloseModalCreateClient}

@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from 'formik'
 import { useContent } from "../../../context/mainContext";
+import toast from 'react-hot-toast';
 import * as Yup from 'yup';
 
-function EditClient({ show, handleClose }) {
+function EditClient({ id, show, handleClose }) {
 
-  const { postClients } = useContent();
+  const { getClientById, updateClient } = useContent();
+
+  const [client, setClient] = useState({
+    identifier: "",
+    name: "",
+    status: "",
+  })
+
+  useEffect(() => {
+    (async () => {
+      if (id) {
+        const resClient = await getClientById(id);
+        setClient(resClient)
+      }
+    })();
+  }, [id, getClientById]);
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -18,16 +34,13 @@ function EditClient({ show, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Formik
-          initialValues={{
-            identifier: "",
-            name: "",
-            status: "",
-          }}
+          initialValues={client}
           onSubmit={(values, { resetForm }) => {
             try {
-              postClients(values);
+              updateClient(id ,values);
               handleClose();
               resetForm();
+              toast.success('Usuario Actualizado');
             } catch (error) {
               console.error(error);
             }
@@ -37,22 +50,11 @@ function EditClient({ show, handleClose }) {
             name: Yup.string().required('Campo requerido'),
             status: Yup.string().oneOf(['ACTIVE', 'INACTIVE', 'STOPPED'], 'Estado inválido').required('Campo requerido')
           })}
+          enableReinitialize
         >
           {({ values, handleChange, handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formNameUser">
-                <FloatingLabel
-                  label="Número de identificación"
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="number"
-                    name="identifier"
-                    value={values.identifier}
-                    onChange={handleChange}
-                  />
-                  <ErrorMessage name="identifier" />
-                </FloatingLabel>
                 <FloatingLabel label="Nombre del cliente" className="mb-3">
                   <Form.Control
                     type="text"
