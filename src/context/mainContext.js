@@ -26,7 +26,6 @@ export const MainProvider = ({ children }) => {
     const getClientById = async (id) => {
         try {
             const res = await getClientRequests(id);
-            console.log(res.data)
             return res.data;
             
         } catch (error) {
