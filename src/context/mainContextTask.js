@@ -15,8 +15,7 @@ export const TaskProvider = ({ children }) => {
     // Tareas
     const getTasks = async () => {
         const res = await getTasksRequests()
-        setContentsTask(res.data.slice(0, 5))
-        console.log(res.data)
+        setContentsTask(res.data.slice(0, 10))
     }
 
     useEffect(() => {

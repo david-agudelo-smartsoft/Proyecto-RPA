@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./TaskTable.css"
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
@@ -9,17 +9,26 @@ import QueryTypeModal from '../modal/QueryTypeModal';
 import { useContentTask } from "../../context/mainContextTask";
 import { useContent } from "../../context/mainContext";
 
-
-
 function TaskTable() {
 
     const { contentsTask } = useContentTask()
     const { getClientById } = useContent()
 
     const [showModal, setShowModal] = useState(false);
+    const [clients, setClients] = useState([]);
 
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
+
+    useEffect(() => {
+        (async () => {
+            const clients = await Promise.all(contentsTask.map(async (task) => {
+                const client = await getClientById(task.client);
+                return { taskId: task._id, client };
+            }));
+            setClients(clients);
+        })();
+    }, [contentsTask, getClientById]);
 
     return (
         <div className='MainContainer-tareas'>
@@ -44,25 +53,24 @@ function TaskTable() {
                     </tr>
                 </thead>
                 <tbody>
-                    {contentsTask.map(contentsTask => {
-                        const dateIni = new Date(contentsTask.dateIni);
-                        const dateFin = new Date(contentsTask.dateFin);
+                    {clients.map(({ taskId, client }) => {
+                        const task = contentsTask.find(({ _id }) => _id === taskId);
+                        const dateIni = new Date(task.dateIni);
+                        const dateFin = new Date(task.dateFin);
                         const diffDate = dateFin.getTime() - dateIni.getTime();
-                        const ClientName = getClientById(contentsTask.client);
-                        console.log(ClientName)
                         return (
-                            <tr key={contentsTask._id}>
-                                <td>{contentsTask.seqTask}</td>
-                                <td>{contentsTask.status}</td>
+                            <tr key={taskId}>
+                                <td>{task.seqTask}</td>
+                                <td>{task.status}</td>
                                 <td className="text-center">
                                     <Button variant="primary" size='sm' onClick={handleShowModal}>
                                         Tipo de consulta
                                     </Button>
                                 </td>
-                                <td>{contentsTask.client}</td>
-                                <td>{contentsTask.bot}</td>
-                                <td>{contentsTask.agent}</td>
-                                <td className="text-center">{contentsTask.attempts}</td>
+                                <td>{task.client === client._id ? client.name : ""}</td>
+                                <td>{task.bot}</td>
+                                <td>{task.agent}</td>
+                                <td className="text-center">{task.attempts}</td>
                                 <td name="tiempo" className="text-center">{Math.floor(diffDate / 6000)} min</td>
                                 <td className="text-center">
                                     <button>
