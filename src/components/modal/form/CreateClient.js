@@ -9,6 +9,7 @@ import * as Yup from 'yup';
 import toast from 'react-hot-toast';
 
 function CreateClient({ show, handleClose }) {
+  
   const { postClients } = useContent();
 
   return (

@@ -54,6 +54,18 @@ function EditClient({ id, show, handleClose }) {
           {({ values, handleChange, handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formNameUser">
+                <FloatingLabel
+                  label="Número de identificación"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="number"
+                    name="identifier"
+                    value={values.identifier}
+                    onChange={handleChange}
+                  />
+                  <ErrorMessage name="identifier" />
+                </FloatingLabel>
                 <FloatingLabel label="Nombre del cliente" className="mb-3">
                   <Form.Control
                     type="text"
