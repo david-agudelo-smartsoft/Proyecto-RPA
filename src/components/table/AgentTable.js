@@ -8,13 +8,17 @@ import CreateAgent from "../modal/form/CreateAgent";
 import { useContentAgent } from "../../context/mainContextAgents";
 
 function AgentTable() {
-  //Petcion GET 
-  const { contents } = useContentAgent()
+  //Petcion GET
+  const { contents } = useContentAgent();
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModalEditAgent, setShowModalEditAgent] = useState(false);
+  const [id, setId] = useState(null);
 
-  const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  const handleShowModalEditAgent = (_id) => {
+    setShowModalEditAgent(true);
+    setId(_id);
+  };
+  const handleCloseModalEditAgent = () => setShowModalEditAgent(false);
 
   const [showModalCreateAgent, setShowModalCreateAgent] = useState(false);
 
@@ -44,27 +48,27 @@ function AgentTable() {
           </tr>
         </thead>
         <tbody>
-        {contents.map(content => (
-          <tr key={content._id}>
-            <td>
-                {content.name}
-              </td>
+          {contents.map((content) => (
+            <tr key={content._id}>
+              <td>{content.name}</td>
+              <td>{content.status}</td>
+              <td> (Validación con colores)</td>
               <td>
-                {content.status}
+                <FontAwesomeIcon
+                  className="edit-boton"
+                  onClick={() => handleShowModalEditAgent(content._id)}
+                  icon={faPenToSquare}
+                />
               </td>
-            <td> (Validación con colores)</td>
-            <td>
-              <FontAwesomeIcon
-                className="edit-boton"
-                onClick={handleShowModal}
-                icon={faPenToSquare}
-              />
-            </td>
-          </tr>
-           ))}
+            </tr>
+          ))}
         </tbody>
       </Table>
-      <EditAgent show={showModal} handleClose={handleCloseModal} />
+      <EditAgent
+        show={showModalEditAgent}
+        handleClose={handleCloseModalEditAgent}
+        id={id}
+      />
       <CreateAgent
         show={showModalCreateAgent}
         handleClose={handleCloseModalCreateAgent}

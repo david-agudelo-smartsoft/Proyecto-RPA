@@ -6,6 +6,7 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from "formik";
 import { useContentAgent } from "../../../context/mainContextAgents";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 function CreateAgent({ show, handleClose }) {
   const { postAgents } = useContentAgent();
@@ -25,6 +26,7 @@ function CreateAgent({ show, handleClose }) {
               postAgents(values);
               handleClose();
               resetForm();
+              toast.success('Agente creado');
             } catch (error) {
               console.error(error);
             }
@@ -71,18 +73,18 @@ function CreateAgent({ show, handleClose }) {
                   />
                 </FloatingLabel>
               </Form.Group>
+              <Modal.Footer>
+                <Button type="submit" variant="primary">
+                  Aceptar
+                </Button>
+                <Button variant="secondary" onClick={handleClose}>
+                  Cerrar
+                </Button>
+              </Modal.Footer>
             </Form>
           )}
         </Formik>
       </Modal.Body>
-      <Modal.Footer>
-        <Button type="submit" variant="primary">
-          Aceptar
-        </Button>
-        <Button variant="secondary" onClick={handleClose}>
-          Cerrar
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }

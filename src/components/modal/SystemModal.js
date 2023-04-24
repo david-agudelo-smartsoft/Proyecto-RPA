@@ -8,13 +8,13 @@ import { useState } from "react";
 function SystemModal({ show, handleClose }) {
   const toppings = [
     {
-      name: "WIN 64",
+      name: "win32",
     },
     {
-      name: "MAC",
+      name: "linux_64",
     },
     {
-      name: "Linux",
+      name: "mac64",
     },
   ];
 
@@ -67,18 +67,18 @@ function SystemModal({ show, handleClose }) {
                 })}
               </ul>
             </div>
+            {/* <div>{toppings}</div> */}
           </Form.Group>
-                <div>{checkedState}</div>
+          <Modal.Footer>
+            <Button type="submit" variant="primary">
+              Aceptar
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button type="submit" variant="primary">
-          Aceptar
-        </Button>
-        <Button variant="secondary" onClick={handleClose}>
-          Cerrar
-        </Button>
-      </Modal.Footer>
     </Modal>
   );
 }

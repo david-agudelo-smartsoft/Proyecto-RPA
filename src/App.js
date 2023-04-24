@@ -1,16 +1,26 @@
 import { Routes, Route } from "react-router-dom";
-import { Agents, Task, Bots, Clients, NotFoundPage, Login, Register } from './pages'
+import {
+  Agents,
+  Task,
+  Bots,
+  Clients,
+  NotFoundPage,
+  Login,
+  Register,
+} from "./pages";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/authContext";
 import { MainProvider } from "./context/mainContext";
-import { TaskProvider } from "./context/mainContextTask";
-import { Toaster } from 'react-hot-toast'
+import { MainProviderAgent } from "./context/mainContextAgents";
+import { MainProviderBot } from "./context/mainContextBots";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <AuthProvider>
       <MainProvider>
-        <TaskProvider>
+        <MainProviderAgent>
+        <MainProviderBot>
           <Routes>
             <Route
               path="/"
@@ -29,7 +39,8 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Toaster />
-        </TaskProvider>
+        </MainProviderBot>
+        </MainProviderAgent>
       </MainProvider>
     </AuthProvider>
   );
