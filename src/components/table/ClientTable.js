@@ -8,8 +8,8 @@ import EditClient from "../modal/form/EditClient";
 import { useContent } from "../../context/mainContext";
 
 function ClientTable() {
-  // Petición GET 
-  const { contents } = useContent()
+  // Petición GET
+  const { contents } = useContent();
 
   // Editar estado
   const [showModalEditClient, setShowModalEditClient] = useState(false);
@@ -18,15 +18,14 @@ function ClientTable() {
   const handleShowModalEditClient = (_id) => {
     setShowModalEditClient(true);
     setId(_id);
-  }
+  };
   const handleCloseModalEditClient = () => setShowModalEditClient(false);
-  console.log(handleCloseModalEditClient)
+  console.log(handleCloseModalEditClient);
 
   const [showModalCreateClient, setShowModalCreateClient] = useState(false);
 
   const handleShowModalCreateClient = () => setShowModalCreateClient(true);
   const handleCloseModalCreateClient = () => setShowModalCreateClient(false);
-
 
   return (
     <div className="MainContainer">
@@ -52,15 +51,11 @@ function ClientTable() {
           </tr>
         </thead>
         <tbody>
-          {contents.map(content => (
+          {contents.map((content) => (
             <tr key={content._id}>
               <td> {content.identifier} </td>
-              <td>
-                {content.name}
-              </td>
-              <td>
-                {content.status}
-              </td>
+              <td>{content.name}</td>
+              <td>{content.status}</td>
               <td>
                 <FontAwesomeIcon
                   className="edit-boton"
@@ -70,10 +65,13 @@ function ClientTable() {
               </td>
             </tr>
           ))}
-
         </tbody>
       </Table>
-      <EditClient show={showModalEditClient} handleClose={handleCloseModalEditClient} id={id}/>
+      <EditClient
+        show={showModalEditClient}
+        handleClose={handleCloseModalEditClient}
+        id={id}
+      />
       <CreateClient
         show={showModalCreateClient}
         handleClose={handleCloseModalCreateClient}

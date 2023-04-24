@@ -12,6 +12,7 @@ import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/authContext";
 import { MainProvider } from "./context/mainContext";
 import { MainProviderAgent } from "./context/mainContextAgents";
+import { MainProviderBot } from "./context/mainContextBots";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <AuthProvider>
       <MainProvider>
         <MainProviderAgent>
+        <MainProviderBot>
           <Routes>
             <Route
               path="/"
@@ -37,6 +39,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Toaster />
+        </MainProviderBot>
         </MainProviderAgent>
       </MainProvider>
     </AuthProvider>

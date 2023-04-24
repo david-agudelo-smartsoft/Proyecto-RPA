@@ -8,12 +8,20 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import CreateBot from "../modal/form/CreateBot";
 import EditBot from "../modal/form/EditBot";
+import { useContentBot } from "../../context/mainContextBots";
 
 function BotTable() {
+  // Petición GET
+  const { contents } = useContentBot();
+
   // Modal Editar
   const [showModalEditBot, setShowModalEditBot] = useState(false);
+  const [id, setId] = useState(null);
 
-  const handleShowModalEditBot = () => setShowModalEditBot(true);
+  const handleShowModalEditBot = (_id) => {
+    setShowModalEditBot(true);
+    setId(_id);
+  };
   const handleCloseModalEditBot = () => setShowModalEditBot(false);
 
   // Modal Crear bot
@@ -48,33 +56,43 @@ function BotTable() {
             <th>Versión</th>
             <th>Compatibilidad</th>
             <th>Número intentos</th>
-            <th>ttResult</th>
-            <th>ttRequest</th>
+            <th>ttlResult</th>
+            <th>ttlRequest</th>
             <th>Editar</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Color</td>
-            <td>Nombre bot</td>
-            <td>ACTIVE</td>
-            <td>2023 4.1</td>
-            <td>Win 32</td>
-            <td>3</td>
-            <td>720</td>
-            <td>720</td>
-            <td>
-              <FontAwesomeIcon
-                className="edit-boton"
-                onClick={handleShowModalEditBot}
-                icon={faPenToSquare}
-              />
-            </td>
-          </tr>
+          {contents.map((content) => (
+            <tr key={content._id}>
+              <td>Color</td>
+              <td>{content.name}</td>
+              <td>{content.status}</td>
+              <td>{content.version}</td>
+              <td>
+                {content.compatibility.map((platform) => (
+                  <td key={platform}>{platform}</td>
+                ))}
+              </td>
+              <td>{content.maximumAttempts}</td>
+              <td>{content.ttlResult}</td>
+              <td>{content.ttlRequest}</td>
+              <td>
+                <FontAwesomeIcon
+                  className="edit-boton"
+                  onClick={() => handleShowModalEditBot(content._id)}
+                  icon={faPenToSquare}
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>
       {/* Modal Editar bot */}
-      <EditBot show={showModalEditBot} handleClose={handleCloseModalEditBot} />
+      <EditBot
+        show={showModalEditBot}
+        handleClose={handleCloseModalEditBot}
+        id={id}
+      />
       {/* Modal Crear bot */}
       <CreateBot
         show={showModalCreateBot}

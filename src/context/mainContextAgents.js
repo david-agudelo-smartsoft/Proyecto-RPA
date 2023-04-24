@@ -1,10 +1,10 @@
 import { useState, createContext, useContext, useEffect } from 'react'
 import { getAgentsRequests, postAgentsRequest, getAgentRequests, updateAgentRequests } from '../API/AgentApi'
 
-const maincontextAgents = createContext()
+const mainContextAgents = createContext()
 
 export const useContentAgent = () => {
-    const context = useContext(maincontextAgents)
+    const context = useContext(mainContextAgents)
     return context
 }
 
@@ -41,7 +41,7 @@ export const MainProviderAgent = ({ children }) => {
         getAgents()
     }, [])
 
-    return <maincontextAgents.Provider value={{
+    return <mainContextAgents.Provider value={{
         contents,
         getAgents,
         postAgents,
@@ -49,6 +49,6 @@ export const MainProviderAgent = ({ children }) => {
         updateAgent
     }}>
         {children}
-    </maincontextAgents.Provider>
+    </mainContextAgents.Provider>
     
 }
