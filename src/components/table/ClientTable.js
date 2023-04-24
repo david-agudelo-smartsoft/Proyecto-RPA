@@ -18,6 +18,7 @@ function ClientTable() {
   const handleShowModalEditClient = (_id) => {
     setShowModalEditClient(true);
     setId(_id);
+    console.log(_id);
   }
   const handleCloseModalEditClient = () => setShowModalEditClient(false);
   console.log(handleCloseModalEditClient)

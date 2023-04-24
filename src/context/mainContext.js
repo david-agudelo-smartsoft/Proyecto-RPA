@@ -27,7 +27,7 @@ export const MainProvider = ({ children }) => {
         try {
             const res = await getClientRequests(id);
             return res.data;
-
+            
         } catch (error) {
             console.error(error);
         }

@@ -5,8 +5,8 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Formik, ErrorMessage } from 'formik'
 import { useContent } from "../../../context/mainContext";
-import toast from 'react-hot-toast';
 import * as Yup from 'yup';
+import toast from 'react-hot-toast';
 
 function EditClient({ id, show, handleClose }) {
 
@@ -37,7 +37,7 @@ function EditClient({ id, show, handleClose }) {
           initialValues={client}
           onSubmit={(values, { resetForm }) => {
             try {
-              updateClient(id ,values);
+              updateClient(id, values);
               handleClose();
               resetForm();
               toast.success('Usuario Actualizado');
@@ -54,6 +54,18 @@ function EditClient({ id, show, handleClose }) {
           {({ values, handleChange, handleSubmit }) => (
             <Form onSubmit={handleSubmit}>
               <Form.Group className="mb-3" controlId="formNameUser">
+                <FloatingLabel
+                  label="Número de identificación"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="number"
+                    name="identifier"
+                    value={values.identifier}
+                    onChange={handleChange}
+                  />
+                  <ErrorMessage name="identifier" />
+                </FloatingLabel>
                 <FloatingLabel label="Nombre del cliente" className="mb-3">
                   <Form.Control
                     type="text"
