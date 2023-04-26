@@ -24,6 +24,19 @@ function AgentTable() {
 
   const handleShowModalCreateAgent = () => setShowModalCreateAgent(true);
   const handleCloseModalCreateAgent = () => setShowModalCreateAgent(false);
+
+  const ahora = Date.now();
+    function getColorTiempoTranscurrido(fecha) {
+      const diferenciaMinutos = (ahora - fecha) / 60000; // Diferencia en minutos
+    
+      if (diferenciaMinutos < 1) {
+        return 'green';
+      } else if (diferenciaMinutos < 2) {
+        return 'yellow';
+      } else {
+        return 'red';
+      }
+    }
   return (
     <div className="MainContainer">
       <div className="pos-title">
@@ -48,20 +61,46 @@ function AgentTable() {
           </tr>
         </thead>
         <tbody>
-          {contents.map((content) => (
-            <tr key={content._id}>
-              <td>{content.name}</td>
-              <td>{content.status}</td>
-              <td> (Validación con colores)</td>
-              <td>
-                <FontAwesomeIcon
-                  className="edit-boton"
-                  onClick={() => handleShowModalEditAgent(content._id)}
-                  icon={faPenToSquare}
-                />
-              </td>
-            </tr>
-          ))}
+          {contents.map((content) => {
+            function compararDescendente(a, b) {
+              const fechaA = new Date(a.lastConnection?.datetime);
+              const fechaB = new Date(b.lastConnection?.datetime);
+              if (fechaA > fechaB) {
+                return -1;
+              } else if (fechaA < fechaB) {
+                return 1;
+              } else {
+                return 0;
+              }
+            }
+            // Ordenar la matriz contents en forma descendente
+            contents.sort(compararDescendente);
+            const opciones = {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric',
+              hour12: false,
+            };
+            return (
+              <tr key={content._id}>
+                <td>{content.name}</td>
+                <td>{content.status}</td>
+                <td style={{ color: getColorTiempoTranscurrido(new Date(content.lastConnection?.datetime)) }}
+                >{content.lastConnection?.datetime ? new Date(content.lastConnection?.datetime).toLocaleDateString('es-ES', opciones) : ''}</td>
+                <td>
+                  <FontAwesomeIcon
+                    className="edit-boton"
+                    onClick={() => handleShowModalEditAgent(content._id)}
+                    icon={faPenToSquare}
+                  />
+                </td>
+              </tr>
+            );
+          })
+          }
         </tbody>
       </Table>
       <EditAgent
@@ -77,4 +116,7 @@ function AgentTable() {
   );
 }
 
+
+
 export default AgentTable;
+
